@@ -72,6 +72,12 @@ $ go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/
 | src | 放置项目源码       |
 
 
+## 链接
+
+- [目录](../../../README.md)
+- 上一节：[搭建开发环境](../0x01%20搭建开发环境/)
+- 下一节：[新建一个项目](../../day001/0x00%20新建一个项目/)
+
 
 
 

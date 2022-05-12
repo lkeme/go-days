@@ -81,7 +81,7 @@ $ go build -o main_linux_amd64 ./main.go  # -o 指定输出可执行文件名
 
 ### 额外
 
-> 如果文件名`main.go`、包名`package main`、方法名`func main()`，则可省略文件名
+> 如果文件名`main.go`、包名`package main`、函数名`func main()`，则可省略文件名
 
 
 ```bash
@@ -95,4 +95,10 @@ $ go build main.go
 
 可以参考Windows平台编译[小脚本build.bat](build.bat)
 
+
+## 链接
+
+- [目录](../../../README.md)
+- 上一节：[向世界问好](../0x01%20向世界问好/)
+- 下一节：[go.mod使用(引用本地依赖)](../0x03%20go.mod使用(引用本地依赖)/)
 

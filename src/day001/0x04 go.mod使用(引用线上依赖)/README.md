@@ -1,31 +1,51 @@
-## 0x03 go.mod使用(引用本地依赖)
+## 0x03 go.mod使用(引用线上依赖)
 
-`go mod`模式在golang1.16之后自动开启  
-使用`go mod`来管理依赖的其中一项作用就是方便导入本地包  
 
-![](../../../static/day001/0x03_1.png)
+### 自动同步包
 
-- 引入本地包是以`go.mod`的`module`为根目录
-- 本地包的函数要让其他包引用使用的话，函数名需要以首字母大写形式
-- 函数小写只能子包自己使用
-- 非业务要求，不要自己调用自己，不做跳出条件的话，会无限递归，死循环
+使用`go mod`模式管理依赖，在`go run`或者`go build`时会自动拉取依赖包
+```bash
+# tidy 会检测该文件夹目录下所有引入的依赖，并写入go.mod
+$ go mod tidy
 
-```go
-package main
-
-import "fmt"
-
-func Hello() {
-	fmt.Println("Hello World!")
-	// 自己调用自己 , 会陷入递归死循环，如果有业务要求，请一定要做跳出条件
-	Hello()
-}
-
-func main()  {
-    Hello()
-}
+$ go run ./main.go
+$ go build ./main.go
 ```
 
+
+### 手动同步包
+
+```bash
+# tidy 会检测该文件夹目录下所有引入的依赖，并写入go.mod
+$ go mod tidy
+
+# 下载go.mod中的依赖下载至本地
+$ go mod download
+```
+
+> 当然，如果你已经了解`go.mod`格式，也可以手动添加至文件
+
+
+### Goland同步包
+
+如果需要在编码过程中拉取包，可以点击`Sync dependencies...`同步
+
+- 可以将鼠标移动至包名，自动浮现出操作框
+- 或者点击包名，按`Alt+Enter`，弹出操作框
+
+![](../../../static/day001/0x04_1.png)
+
+
+
+### 结果
+
+以Goland操作，同步包与运行
+
+![](../../../static/day001/0x04_2.png)
+
+以Golang经典的Web框架`Gin`为例，简单的引入使用  
+
+![](../../../static/day001/0x04_3.png)
 
 
 ## 链接
